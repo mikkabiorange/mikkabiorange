@@ -1,4 +1,4 @@
-token="4z5ABFP4UWBFxEoLaU3ZvT4V5fkVLxx5vuSGUsvZKSM"
+token="aPNtA9CoV1zm0DTi80qSjNdAEkGBUjc4mubX7ssQmZ6"
 url="https://notify-api.line.me/api/notify"
 from bs4 import BeautifulSoup
 import requests
@@ -7,7 +7,7 @@ tenki_url="https://weather.yahoo.co.jp/weather/jp/22/5040.html"
 
 #　天気取得
 def Weather(AreaCode):
-    url = "https://weather.yahoo.co.jp/weather/jp/21/" + str(AreaCode) + ".html"
+    url = "https://weather.yahoo.co.jp/weather/jp/22/" + str(AreaCode) + ".html"
     r = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
     rs = soup.find(class_='forecastCity')
@@ -16,20 +16,7 @@ def Weather(AreaCode):
     print(rs[0] + "の天気は" + rs[1] + "、明日の天気は" + rs[19] + "です。")
     return "岐阜 "+str(rs[0]) + "の天気は" + str(rs[1]) + "、明日の天気は" + str(rs[2]) + "です。"
 
-#　天気取得
-def Weather2(AreaCode):
-    url = "https://weather.yahoo.co.jp/weather/jp/33/" + str(AreaCode) + ".html"
-    r = requests.get(url)
-    soup = BeautifulSoup(r.text, 'html.parser')
-    rs = soup.find(class_='forecastCity')
-    rs = [i.strip() for i in rs.text.splitlines()]
-    rs = [i for i in rs if i != ""]
-    print(rs[0] + "の天気は" + rs[1] + "、明日の天気は" + rs[19] + "です。")
-    return "岡山 "+str(rs[0]) + "の天気は" + str(rs[1]) + "、明日の天気は" + str(rs[2]) + "です。"
-
-message=str(Weather(5210))
-
-message=message+"\r\n"+str(Weather2(6610))
+message=str(Weather(5040))
 
 # 名言取得
 def saying_text():
