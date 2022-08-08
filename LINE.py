@@ -14,7 +14,7 @@ def Weather(AreaCode):
     rs = [i.strip() for i in rs.text.splitlines()]
     rs = [i for i in rs if i != ""]
     print(rs[0] + "の天気は" + rs[1] + "、明日の天気は" + rs[19] + "です。")
-    return "岐阜 "+str(rs[0]) + "の天気は" + str(rs[1]) + "、明日の天気は" + str(rs[2]) + "です。"
+    return "浜松 "+str(rs[0]) + "の天気は" + str(rs[1]) + "、明日の天気は" + str(rs[2]) + "です。"
 
 message=str(Weather(5040))
 
